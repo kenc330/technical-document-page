@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Technical Documentation Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Technical Documentation Page">
+    <!-- Robot Font used from https://fonts.google.com/specimen/Roboto?selection.family=Roboto:wght@400;700&sidebar.open=true -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Library CDN used from https://cdnjs.com/libraries/font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <!-- Icons used from https://iconify.design/ -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script src="script.js"></script>
+
+    <!--
+        Technical Documentation Page: written by Kenneth Clendenin 
+        Submitted on: January 4, 2021
+    -->
+
+</head>
+
+<body>
+
+    <main id="main-doc">
+
+        <!-- Navigation Section -->
+        <nav id="navbar">
+            <header class="active">
+                <h1>Git and GitHub</h1>
+                <a class="icon" id="click-event">
+                    <i id="fa-bars" class="fas fa-bars"></i>
+                </a>
+            </header>
+            <ul id="links">
+                <li><a href="#overview" class="nav-link">Overview</a></li>
+                <li><a href="#prerequisites" class="nav-link">Prerequisites</a></li>
+                <li><a href="#guides" class="nav-link">Guides</a></li>
+                <li><a href="#see_also" class="nav-link">See Also</a></li>
+                <li><a href="#reference" class="nav-link">Reference</a></li>
+            </ul>
+        </nav>
+
+        <div id="main-section">
+
+            <!-- Overview Section -->
+            <section class="main-section" id="overview">
+                <header>
+                    <h2>overview</h2>
+                </header>
+                <p>All developers will use some kind of version control system (VCS), a tool to allow them
+                    to
+                    collaborate with other developers on a project without danger of them overwriting each
+                    other's work,
+                    and roll back to previous versions of the code base if a problem is discovered later on.
+                    The most
+                    popular VCS (at least among web developers) is Git, along with GitHub, a site that
+                    provides hosting
+                    for your repositories and several tools for working with them. This module aims to teach
+                    you what
+                    you need to know about both of them.</p>
+                <p>VCSes are essential for software development:</p>
+                <ul>
+                    <li>It is rare that you will work on a project completely on your own, and as soon as
+                        you start
+                        working with other people you start to run the risk of conflicting with each other's
+                        work — this
+                        is when both of you try to update the same piece of code at the same time. You need
+                        to have some
+                        kind of mechanism in place to manage the occurences, and help avoid loss of work as
+                        a result.
+                    </li>
+                    <li>When working on a project on your own or with others, you'll want to be able to back
+                        up the code
+                        in a central place, so it is not lost if your computer breaks.
+                    </li>
+                    <li>You will also want to be able to roll back to earlier versions if a problem is later
+                        discovered.
+                        You might have started doing this in your own work by creating different versions of
+                        the same
+                        file, e.g. <code>myCode.js</code>, <code>myCode_v2.js</code>,
+                        <code>myCode_v3.js</code>,
+                        <code>myCode_final.js</code>, <code>myCode_really_really_final.js</code>, but this
+                        is really error-prone and unreliable.
+                    </li>
+                    <li>Different team members will commonly want to create their own separate versions of
+                        the code
+                        (called <b>branches</b> in Git), work on a new feature in that version, and then get
+                        it merged in a
+                        controlled manner (in GitHub we use <b>pull requests</b>) with the master version
+                        when they are done
+                        with it.
+                    </li>
+                </ul>
+                <p>VCSes provide tools to meet the above needs. <a href="https://git-scm.com/" target="_blank"
+                        rel="noopener">Git</a>
+                    is an example of a VCS, and <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+                    is
+                    a web site +
+                    infrastructure that provides a Git server plus a number of really useful tools for
+                    working with git
+                    repositories individually or in teams, such as reporting issues with the code, reviewing
+                    tools,
+                    project management features such as assigning tasks and task statuses, and more.</p>
+                <p class="highlight"><b>Note:</b> Git is actually a distributed version control system,
+                    meaning
+                    that a complete copy
+                    of the
+                    repository containing the codebase is made on your computer (and everyone else's). You
+                    make changes
+                    to your own copy, and then push those changes back up to the server, where an
+                    administrator will
+                    decide whether to merge your changes with the master copy.</p>
+            </section>
+            <hr>
+            <!-- Prerequisites Section -->
+            <section class="main-section" id="prerequisites">
+                <header>
+                    <h2>prerequisites</h2>
+                </header>
+                <p>To use Git and GitHub, you need:</p>
+                <ul>
+                    <li>A desktop computer with Git installed on it (see the <a href="https://git-scm.com/downloads"
+                            target="_blank" rel="noopener"> Git downloads page</a>).
+                    </li>
+                    <li>A tool to use Git. Depending on how you like to work, you could use a <a
+                            href="https://git-scm.com/downloads/guis/" target="_blank" rel="noopener"> Git GUI
+                            client</a>
+                        (we'd
+                        recommend GitHub Desktop, SourceTree or Git Kraken) or just stick to using a
+                        terminal window. In
+                        fact, it is probably useful for you to get to know at least the basics of git
+                        terminal commands,
+                        even if you intend to use a GUI.
+                    </li>
+                    <li>A <a href="https://github.com/" target="_blank" rel="noopener"> GitHub account</a>. If you
+                        haven't
+                        already got
+                        one, sign up now using the provided link.</li>
+                </ul>
+                <p>In terms of prerequisite knowledge, you don't need to know anything about web
+                    development, Git/GitHub
+                    or VCSes to start this module. However, it is recommended that you know some coding so
+                    that you have
+                    reasonable computer literacy, and some code to store in your repositories!</p>
+                <p>It is also preferrable that you have some basic terminal knowledge, so for example moving
+                    between
+                    directories, creating files, and modifying the system <code>PATH</code>.</p>
+                <p class="highlight"><b>Note:</b> Github is not the only site/toolset you can use with Git.
+                    There
+                    are other
+                    alternatives such as GitLab that you could try, and you could also try setting your own
+                    Git server
+                    up and using it instead of GitHub. We've only stuck with GitHub in this course to
+                    provide a single
+                    way that works.</p>
+            </section>
+            <hr>
+            <!-- Guides Section -->
+            <section class="main-section" id="guides">
+                <header>
+                    <h2>guides</h2>
+                </header>
+                <p>Note that the links below take you to resources on external sites. Eventually we will are
+                    aiming to
+                    have our own dedicated Git/GitHub course, but for now, these will help you get to grips
+                    with the
+                    subject in hand.</p>
+
+                <!-- Hello World (from GitHub) -->
+                <div class="guide-sections">
+                    <div class="clickable-div drop-down-header-hidden" tabindex="0">
+                        <!-- <input type="checkbox"> -->
+                        <i class="arrow-font fas fa-angle-right"></i>
+                        <p>Hello World</p>
+                    </div>
+                    <div class="hide-drop-down-content">
+                        <p>This is a good place to start — this practical guide gets you to jump right into
+                            using
+                            GitHub, learning the basics of Git such as creating repositories and branches,
+                            making
+                            commits, and opening and merging pull requests.</p>
+                        <p>The <b>Hello World</b> project is a time-honored tradition in computer
+                            programming.
+                            It is a simple
+                            exercise that gets you started when learning something new. Let’s get started
+                            with GitHub!
+                        </p>
+                        <p><b>You’ll learn how to:</b></p>
+                        <ul>
+                            <li>Create and use a repository</li>
+                            <li>Start and manage a new branch</li>
+                            <li>Make changes to a file and push them to GitHub as commits</li>
+                            <li>Open and merge a pull request</li>
+                        </ul>
+                        <h2>What is GitHub?</h2>
+                        <p>GitHub is a code hosting platform for version control and collaboration. It lets
+                            you and
+                            others work together on projects from anywhere.</p>
+                        <p>This tutorial teaches you GitHub essentials like <i>repositories, branches,
+                                commits,</i> and
+                            <i>Pull
+                                Requests</i>. You’ll create your own Hello World repository and learn
+                            GitHub’s Pull
+                            Request
+                            workflow, a popular way to create and review code.
+                        </p>
+                        <h3>No coding necessary</h3>
+                        <p>To complete this tutorial, you need a <a href="https://github.com/" target="_blank"
+                                rel="noopener">GitHub.com account</a> and Internet access. You don’t need
+                            to know how to code, use the command line, or install Git (the version control
+                            software
+                            GitHub is built on).</p>
+                        <p class="highlight"><b>Tip:</b> Open this guide in a separate browser window (or
+                            tab) so you
+                            can see
+                            it while you
+                            complete the steps in the tutorial.</p>
+
+                        <!-- Hello World - Step 1 -->
+                        <div class="guide-steps">
+                            <div class="clickable-div guide-steps-header-hidden" tabindex="0">
+                                <i class="arrow-font fas fa-angle-right"></i>
+                                <p>Step 1. Create a Repository</p>
+                            </div>
+                            <div class="hide-drop-down-content">
+                                <p>A <b>repository</b> is usually used to organize a single project.
+                                    Repositories can
+                                    contain
+                                    folders and files, images, videos, spreadsheets, and data sets –
+                                    anything your
+                                    project needs. We recommend including a <b><i>README</i></b>, or a file
+                                    with
+                                    information about
+                                    your project. GitHub makes it easy to add one at the same time you
+                                    create your new
+                                    repository. <b><i>It also offers other common options such as a license
+                                            file.</i></b></p>
+                                <p>Your <code>hello-world</code> repository can be a place where you store
+                                    ideas,
+                                    resources, or even
+                                    share and discuss things with others.</p>
+                                <p>To create a new repository</p>
+                                <ol>
+                                    <li>In the upper right corner, next to your avatar or identicon, click
+                                        &plus; and
+                                        then
+                                        select <b>New repository</b>.</li>
+                                    <li>Name your repository <code>hello-world</code>.</li>
+                                    <li>Write a short description.</li>
+                                    <li>Select <b>Add a README file</b>.</li>
+                                </ol>
+                                <img src="https://res.cloudinary.com/kennyc33/image/upload/v1603832715/Technical%20Document/plus_icon_hhcjdn.png"
+                                    alt="Create new repository">
+                                <img src="https://res.cloudinary.com/kennyc33/image/upload/v1603832937/Technical%20Document/new_repository_csy77f.png"
+                                    alt="New repository options">
+                                <p>Click <b>Create repository</b>.</p>
+                            </div>
+                        </div>
+                        <!-- Hello World - Step 2 -->
+                        <div class="guide-steps">
+                            <div class="clickable-div guide-steps-header-hidden" tabindex="0">
+                                <i class="arrow-font fas fa-angle-right"></i>
+                                <p>Step 2. Create a Branch</p>
+                            </div>
+                            <div class="hide-drop-down-content">
+                                <p><b>Branching</b> is the way to work on different versions of a repository
+                                    at one
+                                    time.</p>
+                                <p>By default your repository has one branch named <code>main</code> which
+                                    is considered
+                                    to be the
+                                    definitive branch. We use branches to experiment and make edits before
+                                    committing
+                                    them to <code>main</code>.</p>
+                                <p>When you create a branch off the <code>main</code> branch, you’re making
+                                    a copy, or
+                                    snapshot, of
+                                    <code>main</code> as it was at that point in time. If someone else made
+                                    changes to
+                                    the <code>main</code>
+                                    branch while you were working on your branch, you could pull in those
+                                    updates.
+                                </p>
+                                <p>This diagram shows:</p>
+                                <ul>
+                                    <li>The <code>main</code> branch</li>
+                                    <li>A new branch called <code>feature</code> (because we’re doing
+                                        ‘feature work’ on
+                                        this branch)</li>
+                                    <li>The journey that <code>feature</code> takes before it’s merged into
+                                        <code>main</code>
+                                    </li>
+                                </ul>
+                                <img src="https://res.cloudinary.com/kennyc33/image/upload/v1603833333/Technical%20Document/git-branch_z6nesj.png"
+                                    alt="Git branch">
+                                <p>Have you ever saved different versions of a file? Something like:</p>
+                                <ul>
+                                    <li><code>story.txt</code></li>
+                                    <li><code>story-joe-edit.txt</code></li>
+                                    <li><code>story-joe-edit-reviewed.txt</code></li>
+                                </ul>
+                                <p>Branches accomplish similar goals in GitHub repositories.</p>
+                                <p>Here at GitHub, our developers, writers, and designers use branches for
+                                    keeping bug
+                                    fixes and feature work separate from our <code>main</code> (production)
+                                    branch. When
+                                    a change is
+                                    ready, they merge their branch into <code>main</code>.</p>
+                                <h3>To create a new branch</h3>
+                                <ol>
+                                    <li>Go to your new repository <code>hello-world</code>.</li>
+                                    <li>Click the drop down at the top of the file list that says <b>branch:
+                                            main</b>.
+                                    </li>
+                                    <li>Type a branch name, <code>readme-edits</code>, into the new branch
+                                        text box.
+                                    </li>
+                                    <li>Select the blue <b>Create branch</b> box or hit “Enter” on your
+                                        keyboard.</li>
+                                </ol>
+                                <img src="https://res.cloudinary.com/kennyc33/image/upload/v1603833394/Technical%20Document/new_branch_u1cmgm.gif"
+                                    alt="New branch">
+                                <p>Now you have two branches, <code>main</code> and
+                                    <code>readme-edits</code>. They look
+                                    exactly the same, but not
+                                    for long! Next we’ll add our changes to the new branch.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Hello World - Step 3 -->
+                        <div class="guide-steps">
+                            <div class="clickable-div guide-steps-header-hidden" tabindex="0">
+                                <i class="arrow-font fas fa-angle-right"></i>
+                                <p>Step 3. Make and commit changes</p>
+                            </div>
+                            <div class="hide-drop-down-content">
+                                <p>Bravo! Now, you’re on the code view for your <code>readme-edits</code>
+                                    branch, which
+                                    is a copy of
+                                    <code>main</code>. Let’s make some edits.
+                                </p>
+                                <p>On GitHub, saved changes are called <i>commits</i>. Each commit has an
+                                    associated
+                                    <i>commit
+                                        message</i>, which is a description explaining why a particular
+                                    change was made.
+                                    Commit
+                                    messages capture the history of your changes, so other contributors can
+                                    understand
+                                    what you’ve done and why.
+                                </p>
+                                <h2>Make and commit changes</h2>
+                                <ol>
+                                    <li>Click the <code>README.md</code> file.</li>
+                                    <li>Click the &#128393; pencil icon in the upper right corner of the
+                                        file view to
+                                        edit.</li>
+                                    <li>In the editor, write a bit about yourself.</li>
+                                    <li>Write a commit message that describes your changes.</li>
+                                    <li>Click <b>Commit changes</b> button.</li>
+                                </ol>
+                                <img src="https://res.cloudinary.com/kennyc33/image/upload/v1603833576/Technical%20Document/commit_changes_kdccow.png"
+                                    alt="Commit changes">
+                                <p>These changes will be made to just the README file on your readme-edits
+                                    branch, so
+                                    now this branch contains content that’s different from
+                                    <code>main</code>.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Hello World - Step 4 -->
+                        <div class="guide-steps">
+                            <div class="clickable-div guide-steps-header-hidden" tabindex="0">
+                                <i class="arrow-font fas fa-angle-right"></i>
+                                <p>Step 4. Open a Pull Request</p>
+                            </div>
+                            <div class="hide-drop-down-content">
+                                <p>Nice edits! Now that you have changes in a branch off of
+                                    <code>main</code>, you can
+                                    open a <i>pull
+                                        request</i>.
+                                </p>
+                                <p>Pull Requests are the heart of collaboration on GitHub. When you open a
+                                    <i>pull
+                                        request</i>,
+                                    you’re proposing your changes and requesting that someone review and
+                                    pull in your
+                                    contribution and merge them into their branch. Pull requests show
+                                    <i>diffs</i>, or
+                                    differences, of the content from both branches. The changes, additions,
+                                    and
+                                    subtractions are shown in green and red.
+                                </p>
+                                <p>As soon as you make a commit, you can open a pull request and start a
+                                    discussion,
+                                    even before the code is finished.</p>
+                                <p>By using GitHub’s <a
+                                        href="https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/about-writing-and-formatting-on-github#text-formatting-toolbar"
+                                        target="_blank" rel="noopener">@mention
+                                        system</a> in your pull request message, you can ask for
+                                    feedback from specific people or teams, whether they’re down the hall or
+                                    10 time
+                                    zones away.</p>
+                                <p>You can even open pull requests in your own repository and merge them
+                                    yourself. It’s
+                                    a great way to learn the GitHub flow before working on larger projects.
+                                </p>
+                                <h2>Open a Pull Request for changes to the README</h2>
+                                <p><i>Click on the image for a larger version</i></p>
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <p><b>Step</b></p>
+                                        </th>
+                                        <th>
+                                            <p><b>Screenshot</b></p>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_text">
+                                            <p>Click the <span class="iconify" data-icon="octicon:git-pull-request-16"
+                                                    data-inline="false"></span> <b>Pull Request</b> tab,
+                                                then from the
+                                                Pull
+                                                Request page, click the green <b>New pull request</b>
+                                                button.</p>
+                                        </td>
+                                        <td class="table_images"><a class="exclude"
+                                                href="https://res.cloudinary.com/kennyc33/image/upload/v1603833700/Technical%20Document/pull_request_larger_egwk41.gif"
+                                                target="_blank" rel="noopener"><img
+                                                    src="https://res.cloudinary.com/kennyc33/image/upload/v1603833706/Technical%20Document/pull_request_smaller_rrbf3m.gif"
+                                                    alt="Pull request"></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_text">
+                                            <p>In the <b>Example Comparisons</b> box, select the branch you
+                                                made,
+                                                <code>readme-edits</code>, to compare with <code>main</code>
+                                                (the
+                                                original).
+                                            </p>
+                                        </td>
+                                        <td class="table_images"><a class="exclude"
+                                                href="https://res.cloudinary.com/kennyc33/image/upload/v1603833775/Technical%20Document/example_comparisons_larger_lfgvum.gif"
+                                                target="_blank" rel="noopener"><img
+                                                    src="https://res.cloudinary.com/kennyc33/image/upload/v1603833774/Technical%20Document/example_comparisons_smaller_latpir.gif"
+                                                    alt="Example comparisons"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_text">
+                                            <p>Look over your changes in the diffs on the Compare page, make
+                                                sure
+                                                they’re what you want to submit.</p>
+                                        </td>
+                                        <td class="table_images"><a class="exclude"
+                                                href="https://res.cloudinary.com/kennyc33/image/upload/v1603833856/Technical%20Document/changes_z43cxd.png"
+                                                target="_blank" rel="noopener"><img
+                                                    src="https://res.cloudinary.com/kennyc33/image/upload/v1603833856/Technical%20Document/changes_z43cxd.png"
+                                                    alt="Changes"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_text">
+                                            <p>When you’re satisfied that these are the changes you want to
+                                                submit,
+                                                click the big green <b>Create Pull Request</b> button.</p>
+                                        </td>
+                                        <td class="table_images"><a class="exclude"
+                                                href="https://res.cloudinary.com/kennyc33/image/upload/v1603833944/Technical%20Document/create_pull_request_vc3sn7.png"
+                                                target="_blank" rel="noopener"><img
+                                                    src="https://res.cloudinary.com/kennyc33/image/upload/v1603833944/Technical%20Document/create_pull_request_vc3sn7.png"
+                                                    alt="Create pull request"></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_text">
+                                            <p>Give your pull request a title and write a brief description
+                                                of your
+                                                changes.</p>
+                                        </td>
+                                        <td class="table_images"><a class="exclude"
+                                                href="https://res.cloudinary.com/kennyc33/image/upload/v1603834024/Technical%20Document/finalize_pull_request_dvul3j.png"
+                                                target="_blank" rel="noopener"><img
+                                                    src="https://res.cloudinary.com/kennyc33/image/upload/v1603834024/Technical%20Document/finalize_pull_request_dvul3j.png"
+                                                    alt="Finalize pull request"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Hello World - Step 5 -->
+                        <div class="guide-steps">
+                            <div class="clickable-div guide-steps-header-hidden" tabindex="0">
+                                <i class="arrow-font fas fa-angle-right"></i>
+                                <p>Step 5. Merge your Pull Request</p>
+                            </div>
+                            <div class="hide-drop-down-content">
+                                <p>In this final step, it’s time to bring your changes together – merging
+                                    your
+                                    <code>readme-edits</code> branch into the <code>main</code> branch.
+                                </p>
+                                <ol>
+                                    <li>Click the green <b>Merge pull request</b> button to merge the
+                                        changes into
+                                        <code>main</code>.
+                                    </li>
+                                    <li>Click <b>Confirm merge</b>.</li>
+                                    <li>Go ahead and delete the branch, since its changes have been
+                                        incorporated, with
+                                        the <b>Delete branch</b> button in the purple box.</li>
+                                </ol>
+                                <img src="https://res.cloudinary.com/kennyc33/image/upload/v1603834120/Technical%20Document/no_confilcts_q8yylh.png"
+                                    alt="No conflicts">
+                                <img src="https://res.cloudinary.com/kennyc33/image/upload/v1603834183/Technical%20Document/delete_branch_tzsamn.png"
+                                    alt="Delete branch">
+                            </div>
+                        </div>
+                        <h2>Celebrate!</h2>
+                        <p>By completing this tutorial, you’ve learned to create a project and make a pull
+                            request on
+                            GitHub!</p>
+                        <p>Here’s what you accomplished in this tutorial:</p>
+                        <ul>
+                            <li>Created an open source repository</li>
+                            <li>Started and managed a new branch</li>
+                            <li>Changed a file and committed those changes to GitHub</li>
+                            <li>Opened and merged a Pull Request</li>
+                        </ul>
+                        <p>Take a look at your GitHub profile and you’ll see your new <a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-profile/viewing-contributions-on-your-profile"
+                                target="_blank" rel="noopener">contribution
+                                squares!</a></p>
+                        <p>To learn more about the power of Pull Requests, we recommend reading the <a
+                                href="https://guides.github.com/introduction/flow/" target="_blank"
+                                rel="noopener">GitHub
+                                flow
+                                Guide</a>.
+                            You
+                            might also visit <a href="https://github.com/explore" target="_blank" rel="noopener">GitHub
+                                Explore</a> and
+                            get
+                            involved in an Open Source project.</p>
+                        <p class="highlight">Tip: Check out our other <a href="https://guides.github.com/"
+                                target="_blank" rel="noopener">Guides</a>,
+                            <a href="https://www.youtube.com/githubguides" target="_blank" rel="noopener">YouTube
+                                Channel</a> and <a href="https://lab.github.com/" target="_blank"
+                                rel="noopener">On-Demand
+                                Training</a> for more on how to
+                            get started
+                            with GitHub.
+                        </p>
+                        <hr>
+                    </div>
+                </div>
+                <!-- Git Handbook (from GitHub)  -->
+                <div class="guide-sections">
+                    <div class="clickable-div drop-down-header-hidden" tabindex="0">
+                        <i class="arrow-font fas fa-angle-right"></i>
+                        <p>Git Handbook</p>
+                    </div>
+                    <div class="hide-drop-down-content">
+                        <p>This Git Handbook goes into a little more depth, explaining what a VCS is, what a
+                            repository
+                            is, how the basic GitHub model works, Git commands and examples, and more.</p>
+                        <h2>What’s a version control system?</h2>
+                        <p>A version control system, or VCS, tracks the history of changes as people and
+                            teams
+                            collaborate on projects together. As the project evolves, teams can run tests,
+                            fix bugs, and
+                            contribute new code with the confidence that any version can be recovered at any
+                            time.
+                            Developers can review project history to find out:</p>
+                        <ul>
+                            <li>Which changes were made?</li>
+                            <li>Who made the changes?</li>
+                            <li>When were the changes made?</li>
+                            <li>Why were changes needed?</li>
+                        </ul>
+                        <h2>What’s a distributed version control system?</h2>
+                        <p>Git is an example of a distributed version control system (DVCS) commonly used
+                            for open
+                            source and commercial software development. DVCSs allow full access to every
+                            file, branch,
+                            and iteration of a project, and allows every user access to a full and
+                            self-contained
+                            history of all changes. Unlike once popular centralized version control systems,
+                            DVCSs like
+                            Git don’t need a constant connection to a central repository. Developers can
+                            work anywhere
+                            and collaborate asynchronously from any time zone.</p>
+                        <p>Without version control, team members are subject to redundant tasks, slower
+                            timelines, and
+                            multiple copies of a single project. To eliminate unnecessary work, Git and
+                            other VCSs give
+                            each contributor a unified and consistent view of a project, surfacing work
+                            that’s already
+                            in progress. Seeing a transparent history of changes, who made them, and how
+                            they contribute
+                            to the development of a project helps team members stay aligned while working
+                            independently.
+                        </p>
+                        <h2>Why Git?</h2>
+                        <p>According to the latest <a href="https://insights.stackoverflow.com/survey/2017#technology"
+                                target="_blank" rel="noopener">Stack Overflow
+                                developer survey</a>, more than 70 percent of developers
+                            use Git, making it the most-used VCS in the world. Git is commonly used for both
+                            open source
+                            and commercial software development, <b>with significant benefits</b> for
+                            individuals, teams
+                            and
+                            businesses.</p>
+                        <ul>
+                            <li>Git lets developers see the entire timeline of their changes, decisions, and
+                                progression
+                                of any project in one place. From the moment they access the history of a
+                                project, the
+                                developer has all the context they need to understand it and start
+                                contributing.</li>
+                            <li>Developers work in every time zone. With a DVCS like Git, collaboration can
+                                happen any
+                                time while maintaining source code integrity. Using branches, developers can
+                                safely
+                                propose changes to production code.</li>
+                            <li>Businesses using Git can break down communication barriers between teams and
+                                keep them
+                                focused on doing their best work. Plus, Git makes it possible to align
+                                experts across a
+                                business to collaborate on major projects.</li>
+                        </ul>
+                        <h2>What’s a repository?</h2>
+                        <p>A repository, or <a href="https://git-scm.com/" target="_blank" rel="noopener">Git
+                                project</a>,
+                            encompasses
+                            the entire
+                            collection of files and folders
+                            associated with a project, along with each file’s revision history. The file
+                            history appears
+                            as snapshots in time called commits, and the commits exist as a linked-list
+                            relationship,
+                            and can be organized into multiple lines of development called branches. Because
+                            Git is a
+                            DVCS, repositories are self-contained units and anyone who owns a copy of the
+                            repository can
+                            access the entire codebase and its history. Using the command line or other
+                            ease-of-use
+                            interfaces, a git repository also allows for: interaction with the history,
+                            cloning,
+                            creating branches, committing, merging, comparing changes across versions of
+                            code, and more.
+                        </p>
+                        <p>Working in repositories keeps development projects organized and protected.
+                            Developers are
+                            encouraged to fix bugs, or create fresh features, without fear of derailing
+                            mainline
+                            development efforts. Git facilitates this through the use of topic branches:
+                            lightweight
+                            pointers to commits in history that can be easily created and deprecated when no
+                            longer
+                            needed.</p>
+                        <p>Through platforms like GitHub, Git also provides more opportunities for project
+                            transparency
+                            and collaboration. Public repositories help teams work together to build the
+                            best possible
+                            final product.</p>
+                        <h2>Basic Git commands</h2>
+                        <p>To use Git, developers use specific commands to copy, create, change, and combine
+                            code. These
+                            commands can be executed directly from the command line or by using an
+                            application like
+                            <a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a> or
+                            Git
+                            Kraken. Here
+                            are some common
+                            commands for using Git:
+                        </p>
+                        <ul>
+                            <li><code>git init</code> initializes a brand new Git repository and begins
+                                tracking an
+                                existing
+                                directory. It adds a hidden subfolder within the existing directory that
+                                houses the
+                                internal data structure required for version control.</li>
+                            <li><code>git clone</code> creates a local copy of a project that already exists
+                                remotely.
+                                The clone
+                                includes all the project’s files, history, and branches.</li>
+                            <li><code>git add</code> stages a change. Git tracks changes to a developer’s
+                                codebase, but
+                                it’s
+                                necessary to stage and take a snapshot of the changes to include them in the
+                                project’s
+                                history. This command performs staging, the first part of that two-step
+                                process. Any
+                                changes that are staged will become a part of the next snapshot and a part
+                                of the
+                                project’s history. Staging and committing separately gives developers
+                                complete control
+                                over the history of their project without changing how they code and work.
+                            </li>
+                            <li><code>git commit</code> saves the snapshot to the project history and
+                                completes the
+                                change-tracking
+                                process. In short, a commit functions like taking a photo. Anything that’s
+                                been staged
+                                with <code>git add</code> will become a part of the snapshot with
+                                <code>git commit</code>.
+                            </li>
+                            <li><code>git status</code> shows the status of changes as untracked, modified,
+                                or staged.
+                            </li>
+                            <li><code>git branch</code> shows the branches being worked on locally.</li>
+                            <li><code>git merge</code> merges lines of development together. This command is
+                                typically
+                                used to
+                                combine changes made on two distinct branches. For example, a developer
+                                would merge when
+                                they want to combine changes from a feature branch into the main branch for
+                                deployment.
+                            </li>
+                            <li><code>git pull</code> updates the local line of development with updates
+                                from its remote
+                                counterpart.
+                                Developers use this command if a teammate has made commits to a branch on a
+                                remote, and
+                                they would like to reflect those changes in their local environment.</li>
+                            <li><code>git push</code> updates the remote repository with any commits made
+                                locally to a
+                                branch.</li>
+                        </ul>
+                        <p>Learn more from <a href="https://git-scm.com/docs" target="_blank" rel="noopener">a full
+                                reference guide to
+                                Git commands</a>.</p>
+                        <h3>Explore more Git commands</h3>
+                        <p>For a detailed look at Git practices, the videos below show how to get the most
+                            out of some
+                            Git commands.</p>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=rBbbOouhI-s&index=2&list=PLg7s6cbtAD17Gw5u8644bgKhgRLiJXdX4"
+                                    target="_blank" rel="noopener">Working locally</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=SxmveNrZb5k&list=PLg7s6cbtAD17Gw5u8644bgKhgRLiJXdX4&index=3"
+                                    target="_blank" rel="noopener"><code>git status</code></a></li>
+                            <li><a href="https://www.youtube.com/watch?v=Vb0Ghkkc2hk&index=4&list=PLg7s6cbtAD17Gw5u8644bgKhgRLiJXdX4"
+                                    target="_blank" rel="noopener">Two-step commits</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=-uQHV9GOA0w&index=5&list=PLg7s6cbtAD17Gw5u8644bgKhgRLiJXdX4"
+                                    target="_blank" rel="noopener"><code>git pull</code> and <code>git push</code></a>
+                            </li>
+                        </ul>
+                        <h2>How GitHub fits in</h2>
+                        <p>GitHub is a Git hosting repository that provides developers with tools to ship
+                            better code
+                            through command line features, issues (threaded discussions), pull requests,
+                            code review, or
+                            the use of a collection of free and for-purchase apps in the GitHub Marketplace.
+                            With
+                            collaboration layers like the GitHub flow, a community of 15 million developers,
+                            and an
+                            ecosystem with hundreds of integrations, GitHub changes the way software is
+                            built.</p>
+                        <h2>How GitHub works</h2>
+                        <p>GitHub builds collaboration directly into the development process. Work is
+                            organized into
+                            repositories, where developers can outline requirements or direction and set
+                            expectations
+                            for team members. Then, using the GitHub flow, developers simply create a branch
+                            to work on
+                            updates, commit changes to save them, open a pull request to propose and discuss
+                            changes,
+                            and merge pull requests once everyone is on the same page.</p>
+                        <h2>The GitHub flow</h2>
+                        <p>The GitHub flow is a lightweight, branch-based workflow built around core Git
+                            commands used
+                            by teams around the globe—including ours.</p>
+                        <p>The GitHub flow has six steps, each with distinct benefits when implemented:</p>
+                        <ol>
+                            <li><b>Create a branch:</b> Topic branches created from the canonical deployment
+                                branch
+                                (usually
+                                <code>main</code>) allow teams to contribute to many parallel efforts.
+                                Short-lived topic
+                                branches, in
+                                particular, keep teams focused and results in quick ships.
+                            </li>
+                            <li><b>Add commits:</b> Snapshots of development efforts within a branch create
+                                safe,
+                                revertible
+                                points in the project’s history.</li>
+                            <li><b>Open a pull request:</b> Pull requests publicize a project’s ongoing
+                                efforts and set
+                                the
+                                tone for a transparent development process.</li>
+                            <li><b>Discuss and review code:</b> Teams participate in code reviews by
+                                commenting,
+                                testing, and
+                                reviewing open pull requests. Code review is at the core of an open and
+                                participatory
+                                culture.</li>
+                            <li><b>Merge:</b> Upon clicking merge, GitHub automatically performs the
+                                equivalent of a
+                                local ‘git
+                                merge’ operation. GitHub also keeps the entire branch development history on
+                                the merged
+                                pull request.</li>
+                            <li><b>Deploy:</b> Teams can choose the best release cycles or incorporate
+                                continuous
+                                integration
+                                tools and operate with the assurance that code on the deployment branch has
+                                gone through
+                                a robust workflow.</li>
+                        </ol>
+                        <h3>Learn more about the GitHub flow</h3>
+                        <p>Developers can find more information about the GitHub flow in the resources
+                            provided below.
+                        </p>
+                        <ol>
+                            <li><a href="https://guides.github.com/introduction/flow/" target="_blank"
+                                    rel="noopener">Interactive
+                                    guide</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=47E-jcuQz5c&index=1&list=PLg7s6cbtAD17Gw5u8644bgKhgRLiJXdX4"
+                                    target="_blank" rel="noopener">GitHub Flow video</a></li>
+                        </ol>
+                        <h2>GitHub and the command line</h2>
+                        <p>For developers new to the command line, the GitHub Training team has put together
+                            a series of
+                            <a href="https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/git-and-github-learning-resources"
+                                target="_blank" rel="noopener">tutorials</a> on Git commands to guide the way.
+                            Sometimes, a
+                            series of
+                            commands can paint a
+                            picture of how to use Git:
+                        </p>
+                        <h3>Example: Contribute to an existing repository</h3>
+                        <div class="git-handbook-example">
+                            <p># download a repository on GitHub.com to our machine<br>
+                                git clone https://github.com/me/repo.git</p>
+                            <p># change into the `repo` directory<br>
+                                cd repo</p>
+                            <p># create a new branch to store any new changes<br>
+                                git branch my-branch</p>
+                            <p># switch to that branch (line of development)<br>
+                                git checkout my-branch</p>
+                            <p># make changes, for example, edit `file1.md` and `file2.md` using the text
+                                editor</p>
+                            <p># stage the changed files<br>
+                                git add file1.md file2.md</p>
+                            <p># take a snapshot of the staging area (anything that's been added)<br>
+                                git commit -m "my snapshot"</p>
+                            <p># push changes to github<br>
+                                git push --set-upstream origin my-branch</p>
+                        </div>
+
+                        <h3>Example: Start a new repository and publish it to GitHub</h3>
+                        <p>First, you will need to create a new repository on GitHub. You can learn how to
+                            create a new
+                            repository in our <a href="https://guides.github.com/activities/hello-world/#repository"
+                                target="_blank" rel="noopener">Hello World guide</a>. <b>Do not</b> initialize the
+                            repository with a
+                            README,
+                            .gitignore or License. This empty repository will await your code.</p>
+                        <div class="git-handbook-example">
+                            <p># create a new directory, and initialize it with git-specific functions<br>
+                                git init my-repo</p>
+                            <p># change into the `my-repo` directory<br>
+                                cd my-repo
+                            </p>
+                            <p># create the first file in the project<br>
+                                touch README.md</p>
+                            <p># git isn't aware of the file, stage it<br>
+                                git add README.md</p>
+                            <p># take a snapshot of the staging area<br>
+                                git commit -m "add README to initial commit"</p>
+                            <p># provide the path for the repository you created on github<br>
+                                git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+                            </p>
+                            <p># push changes to github<br>
+                                git push --set-upstream origin main</p>
+                        </div>
+
+                        <h3>Example: contribute to an existing branch on GitHub</h3>
+                        <div class="git-handbook-example">
+                            <p># assumption: a project called `repo` already exists on the machine, and a
+                                new branch has
+                                been pushed to GitHub.com since the last time changes were made locally</p>
+                            <p># change into the `repo` directory<br>
+                                cd repo</p>
+                            <p># update all remote tracking branches, and the currently checked out
+                                branch<br>
+                                git pull
+                            </p>
+                            <p># change into the existing branch called `feature-a`<br>
+                                git checkout feature-a</p>
+                            <p># make changes, for example, edit `file1.md` using the text editor
+                            </p>
+                            <p># stage the changed file<br>
+                                git add file1.md</p>
+                            <p># take a snapshot of the staging area<br>
+                                git commit -m "edit file1"</p>
+                            <p># push changes to github<br>
+                                git push</p>
+                        </div>
+                        <h2>Models for collaborative development</h2>
+                        <p>There are two primary ways people collaborate on GitHub:</p>
+                        <ol>
+                            <li>Shared repository</li>
+                            <li><a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-forks"
+                                    target="_blank" rel="noopener">Fork </a>and <a
+                                    href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests"
+                                    target="_blank" rel="noopener">pull</a></li>
+                        </ol>
+                        <p>With a <i>shared repository</i>, individuals and teams are explicitly designated
+                            as
+                            contributors
+                            with read, write, or administrator access. This simple permission structure,
+                            combined with
+                            features like protected branches and Marketplace, helps teams progress quickly
+                            when they
+                            adopt GitHub.</p>
+                        <p>For an open source project, or for projects to which anyone can contribute,
+                            managing
+                            individual permissions can be challenging, but a <i>fork</i> and <i>pull</i>
+                            model allows
+                            anyone who can
+                            view the project to contribute. A fork is a copy of a project under an
+                            developer’s personal
+                            account. Every developer has full control of their fork and is free to implement
+                            a fix or
+                            new feature. Work completed in forks is either kept separate, or is surfaced
+                            back to the
+                            original project via a pull request. There, maintainers can review the suggested
+                            changes
+                            before they’re merged. See the <a href="https://guides.github.com/activities/forking/"
+                                target="_blank" rel="noopener">Forking
+                                Projects Guide</a> for more information.</p>
+                        <h2>Learn at your own pace</h2>
+                        <p>The GitHub team has created a library of educational videos and guides to help
+                            users continue
+                            to develop their skills and build better software.</p>
+                        <ul>
+                            <li><a href="https://github.com/showcases/great-for-new-contributors" target="_blank"
+                                    rel="noopener">Beginner projects to explore</a></li>
+                            <li><a href="https://www.youtube.com/githubguides" target="_blank" rel="noopener">GitHub
+                                    video
+                                    games</a>
+                            </li>
+                            <li><a href="https://lab.github.com/" target="_blank" rel="noopener">GitHub on-demand
+                                    training</a></li>
+                            <li><a href="https://guides.github.com/" target="_blank" rel="noopener">GitHub training
+                                    guides</a></li>
+                            <li><a href="https://lab.github.com/" target="_blank" rel="noopener">GitHub training
+                                    resources</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Forking Projects (from GitHub) -->
+                <div class="guide-sections">
+                    <div class="clickable-div drop-down-header-hidden" tabindex="0">
+                        <i class="arrow-font fas fa-angle-right"></i>
+                        <p>Forking Projects</p>
+                    </div>
+                    <div class="hide-drop-down-content">
+                        <p>Forking projects is essential when you want to contribute to someone else's code.
+                            This guide
+                            explains how.</p>
+                        <p>After using GitHub by yourself for a while, you may find yourself wanting to
+                            contribute to
+                            someone else’s project. Or maybe you’d like to use someone’s project as the
+                            starting point
+                            for your own. This process is known as <i>forking</i>.</p>
+                        <p>Creating a “fork” is producing a personal copy of someone else’s project. Forks
+                            act as a sort
+                            of bridge between the original repository and your personal copy. You can submit
+                            <i>Pull
+                                Requests</i> to help make other people’s projects better by offering your
+                            changes up to
+                            the
+                            original project. Forking is at the core of social coding at GitHub.
+                        </p>
+                        <p>For this tutorial, we’ll be using <a href="https://github.com/octocat/Spoon-Knife"
+                                target="_blank" rel="noopener">the
+                                Spoon-Knife project</a>, a test repository that’s hosted on
+                            GitHub.com that lets you test the Pull Request workflow.</p>
+                        <h2>Fork the repository</h2>
+                        <p>To fork the Spoon-Knife repository, click the <b>Fork</b> button in the header of
+                            the
+                            repository.</p>
+                        <img src="https://res.cloudinary.com/kennyc33/image/upload/v1604532530/Technical%20Document/fork_z87nvz.png"
+                            alt="Fork">
+                        <p>Sit back and watch the forking magic. When it’s finished, you’ll be taken to your
+                            copy of the
+                            Spoon-Knife repository.</p>
+                        <h2>Clone your fork</h2>
+                        <p>You’ve successfully forked the Spoon-Knife repository, but so far, it only exists
+                            on GitHub.
+                            To be able to work on the project, you will need to clone it to your computer.
+                        </p>
+                        <p>If you’re using <a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub
+                                Desktop</a>,
+                            this process is a breeze. On your fork of Spoon-Knife,
+                            navigate over to the right hand side bar and click <b>Clone or Download</b>. How
+                            you clone
+                            is up to
+                            you. Some options are <a href="https://lab.github.com/" target="_blank"
+                                rel="noopener">cloning
+                                with the
+                                command line</a>, or by <a href="https://lab.github.com/" target="_blank"
+                                rel="noopener">using GitHub
+                                Desktop</a>.</p>
+                        <h2>Making and pushing changes</h2>
+                        <p>Go ahead and make a few changes to the project using your favorite text editor,
+                            like <a href="https://atom.io/" target="_blank" rel="noopener">Atom</a>.
+                            You could, for example, change the text in <i>index.html</i> to add your GitHub
+                            username.
+                        </p>
+                        <p>When you’re ready to submit your changes, <b>stage</b> and <b>commit</b> your
+                            changes.</p>
+                        <p class="highlight">Is staging and committing changes locally too advanced right
+                            now? <a href="https://lab.github.com/" target="_blank" rel="noopener">Check out
+                                this on-demand training</a> for interactive tutorials to help you learn
+                            more.</p>
+                        <p>Right now, you’ve essentially told Git, “Okay, I’ve taken a snapshot of my
+                            changes!” You can
+                            continue to make more changes, and take more commit snapshots. When you’re ready
+                            to push
+                            your changes up to GitHub.com, push your changes to the remote.</p>
+                        <h2>Making a Pull Request</h2>
+                        <p>At last, you’re ready to propose changes into the main project! This is the final
+                            step in
+                            producing a fork of someone else’s project, and arguably the most important. If
+                            you’ve made
+                            a change that you feel would benefit the community as a whole, you should
+                            definitely
+                            consider contributing back.</p>
+                        <p>To do so, head on over to the repository on GitHub.com where your project lives.
+                            For this
+                            example, it would be at
+                            <code>https://www.github.com/your_username/Spoon-Knife</code>.
+                            After you refresh your web browser you’ll see a message indicating that “This
+                            branch is 1
+                            commit ahead of octocat:master”.
+                        </p>
+                        <img src="https://res.cloudinary.com/kennyc33/image/upload/v1604527256/Technical%20Document/push_to_fork_message_kxhoeo.png"
+                            alt="Push to fork message">
+                        <p>Clicking on <b>Pull Request or Compare</b> sends you to a discussion page, where
+                            you can
+                            enter a
+                            title and optional description. It’s important to provide as much useful
+                            information and a
+                            rationale for <i>why</i> you’re making this Pull Request in the first place. The
+                            project
+                            owner
+                            needs to be able to determine whether your change is as useful to everyone as
+                            you think it
+                            is.</p>
+                        <img src="https://res.cloudinary.com/kennyc33/image/upload/v1604527228/Technical%20Document/push_to_fork_pull_compare_sefecl.png"
+                            alt="Push to fork pull request/compare">
+                        <img src="https://res.cloudinary.com/kennyc33/image/upload/v1604527237/Technical%20Document/compare_changes_vbkltk.png"
+                            alt="Compare changes">
+                        <p>When you’re ready typing out your heartfelt argument, click on <b>Create pull
+                                request</b>.
+                            You’re done!</p>
+                        <img src="https://res.cloudinary.com/kennyc33/image/upload/v1604527244/Technical%20Document/open_pull_request_dafsri.png"
+                            alt="Open pull request">
+                        <p>Pull Requests are an area for discussion. In this case, the Octocat is very busy,
+                            and
+                            probably won’t merge your changes. For other projects, don’t be offended if the
+                            project
+                            owner rejects your Pull Request, or asks for more information on why it’s been
+                            made. It may
+                            even be that the project owner chooses not to merge your pull request, and
+                            that’s totally
+                            okay. Your copy will exist in infamy on the Internet. And who knows–maybe
+                            someone you’ve
+                            never met will find your changes much more valuable than the original project.
+                            Share and
+                            share alike!</p>
+                        <h2>Huzzah!</h2>
+                        <p>You’ve successfully forked and contributed back to a repository. Go forth, and
+                            contribute
+                            some more!</p>
+                    </div>
+                </div>
+                <!-- About Pull Requests (from GitHub) -->
+                <div class="guide-sections">
+                    <div class="clickable-div drop-down-header-hidden" tabindex="0">
+                        <i class="arrow-font fas fa-angle-right"></i>
+                        <p>About Pull Requests</p>
+                    </div>
+                    <div class="hide-drop-down-content">
+                        <p>A useful guide to managing pull requests, the way that your suggested code
+                            changes are
+                            delivered to people's repositories for consideration.</p>
+                        <h2>About pull requests</h2>
+                        <p>Pull requests let you tell others about changes you've pushed to a branch in a
+                            repository on
+                            GitHub. Once a pull request is opened, you can discuss and review the potential
+                            changes with
+                            collaborators and add follow-up commits before your changes are merged into the
+                            base branch.
+                        </p>
+                        <div class="highlight">
+                            <p><b>Note:</b> When working with pull requests, keep the following in mind:</p>
+                            <ul>
+                                <li>If you're working in the <a
+                                        href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-collaborative-development-models"
+                                        target="_blank" rel="noopener">shared repository model</a>, we recommend that
+                                    you
+                                    use a topic
+                                    branch for your pull request. While you can send pull requests from any
+                                    branch or
+                                    commit, with a topic branch you can push follow-up commits if you need
+                                    to update
+                                    your
+                                    proposed changes.</li>
+                                <li>When pushing commits to a pull request, don't force push. Force pushing
+                                    can corrupt
+                                    your
+                                    pull request.</li>
+                            </ul>
+                        </div>
+                        <p>After initializing a pull request, you'll see a review page that shows a
+                            high-level overview
+                            of the changes between your branch (the compare branch) and the repository's
+                            base branch.
+                            You can add a summary of the proposed changes, review the changes made by
+                            commits, add
+                            labels, milestones, and assignees, and @mention individual contributors or
+                            teams. For more
+                            information, see "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request"
+                                target="_blank" rel="noopener">
+                                Creating a pull request</a>."</p>
+                        <p>Once you've created a pull request, you can push commits from your topic branch
+                            to add them
+                            to your existing pull request. These commits will appear in chronological order
+                            within your
+                            pull request and the changes will be visible in the "Files changed" tab.</p>
+                        <p>Other contributors can review your proposed changes, add review comments,
+                            contribute to the
+                            pull request discussion, and even add commits to the pull request.</p>
+                        <p>You can see information about the branch's current deployment status and past
+                            deployment
+                            activity on the "Conversation" tab. For more information, see "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/viewing-deployment-activity-for-your-repository"
+                                target="_blank" rel="noopener">Viewing deployment activity
+                                for a repository</a>."</p>
+                        <p>After you're happy with the proposed changes, you can merge the pull request. If
+                            you're
+                            working in a shared repository model, you create a pull request and you, or
+                            someone else,
+                            will merge your changes from your feature branch into the base branch you
+                            specify in your
+                            pull request. For more information, see "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request"
+                                target="_blank" rel="noopener">Merging a pull request</a>."</p>
+                        <p>If status checks are required for a repository, the required status checks must
+                            pass before
+                            you can merge your branch into the protected branch. For more information, see
+                            "<a href="https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/about-required-status-checks"
+                                target="_blank" rel="noopener">About required status checks</a>."</p>
+                        <p>You can link a pull request to an issue to show that a fix is in progress and to
+                            automatically close the issue when someone merges the pull request. For more
+                            information,
+                            see "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue"
+                                target="_blank" rel="noopener">Linking a pull request to an issue</a>."</p>
+                        <div class="highlight">
+                            <p><b>Tips:</b></p>
+                            <ul>
+                                <li>To toggle between collapsing and expanding all outdated review comments
+                                    in a pull
+                                    request, hold down <code>Alt</code> and click <b>Show outdated</b> or
+                                    <b>Hide
+                                        outdated</b>. For more shortcuts,
+                                    see "<a
+                                        href="https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/keyboard-shortcuts"
+                                        target="_blank" rel="noopener">Keyboard shortcuts</a>."
+                                </li>
+                                <li>You can squash commits when merging a pull request to gain a more
+                                    streamlined view
+                                    of changes. For more information, see "<a
+                                        href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges"
+                                        target="_blank" rel="noopener">About pull request merges</a>."</li>
+                            </ul>
+                        </div>
+                        <p>You can visit your dashboard to quickly find links to recently updated pull
+                            requests
+                            you're working on or subscribed to. For more information, see "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-user-account/about-your-personal-dashboard"
+                                target="_blank" rel="noopener">About your personal
+                                dashboard</a>."</p>
+                        <h2>Draft pull requests</h2>
+                        <p>Draft pull requests are available in public repositories with GitHub Free for
+                            organizations
+                            and legacy per-repository billing plans, and in public and private repositories
+                            with GitHub
+                            Team, GitHub Enterprise Server 2.17+, and GitHub Enterprise Cloud. For more
+                            information, see
+                            "<a href="https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/githubs-products"
+                                target="_blank" rel="noopener">GitHub's products</a>."</p>
+                        <p>When you create a pull request, you can choose to create a pull request that is
+                            ready for
+                            review or a draft pull request. Draft pull requests cannot be merged, and code
+                            owners are
+                            not automatically requested to review draft pull requests. For more information
+                            about
+                            creating a draft pull request, see "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request"
+                                target="_blank" rel="noopener">Creating a pull request</a>" and "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork"
+                                target="_blank" rel="noopener">Creating a pull request
+                                from a fork</a>."</p>
+                        <p>When you're ready to get feedback on your pull request, you can mark your draft
+                            pull request
+                            as ready for review. Marking a pull request as ready for review will request
+                            reviews from
+                            any code owners. You can convert a pull request to a draft at any time. For more
+                            information, see "<a
+                                href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request"
+                                target="_blank" rel="noopener">Changing the stage of a pull request</a>."</p>
+                        <h2>Differences between commits on compare and pull request pages</h2>
+                        <p>The compare and pull request pages use different methods to calculate the diff
+                            for changed
+                            files:</p>
+                        <ul>
+                            <li>Compare pages show the diff between the tip of the head ref and the current
+                                common
+                                ancestor (that is, the merge base) of the head and base ref.</li>
+                            <li>Pull request pages show the diff between the tip of the head ref and the
+                                common ancestor
+                                of the head and base ref at the time when the pull request was created.
+                                Consequently,
+                                the merge base used for the comparison might be different.</li>
+                        </ul>
+                        <h2>Further reading</h2>
+                        <ul>
+                            <li>"<a href="https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#pull-request"
+                                    target="_blank" rel="noopener">Pull request</a>" in the GitHub glossary</li>
+                            <li>"<a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-branches"
+                                    target="_blank" rel="noopener">About branches</a>"</li>
+                            <li>"<a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request"
+                                    target="_blank" rel="noopener">Commenting on a pull request</a>"</li>
+                            <li>"<a
+                                    href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request">Merging
+                                    a pull request</a>"</li>
+                            <li>"<a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request"
+                                    target="_blank" rel="noopener">Closing a pull request</a>"</li>
+                            <li>"<a href="https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/deleting-and-restoring-branches-in-a-pull-request"
+                                    target="_blank" rel="noopener">Deleting unused branches</a>"</li>
+                            <li>"<a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges"
+                                    target="_blank" rel="noopener">About pull request merges</a>"</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <hr>
+
+            <!-- See Also Section -->
+            <section class="main-section" id="see_also">
+                <header>
+                    <h2>see also</h2>
+                </header>
+                <ul>
+                    <li><a href="https://guides.github.com/features/issues/" target="_blank" rel="noopener">Mastering
+                            issues</a></li>
+                    <li><a href="https://guides.github.com/introduction/flow/" target="_blank" rel="noopener">Git
+                            command
+                            list</a></li>
+                    <li><a href="https://git-scm.com/docs">Mastering markdown</a> (the text format you write
+                        in on PR,
+                        issue comments, and <code>.md</code> files).</li>
+                    <li><a href="https://guides.github.com/features/pages/" target="_blank" rel="noopener">Getting
+                            Started
+                            with GitHub
+                            Pages</a> (how
+                        to publish demos and websites on GitHub).</li>
+                    <li><a href="https://learngitbranching.js.org/" target="_blank" rel="noopener">Learn Git
+                            branching</a>
+                    </li>
+                    <li><a href="https://github.com/k88hudson/git-flight-rules" target="_blank" rel="noopener">Flight
+                            rules
+                            for Git</a>
+                        (a very useful
+                        compendium of ways to achieve specific things in Git, including how to correct
+                        things when you
+                        went wrong).</li>
+                    <li><a href="https://dangitgit.com/" target="_blank" rel="noopener">Dangit, git!</a> (another useful
+                        compendium,
+                        specifically of
+                        ways to correct things when you went wrong).</li>
+                </ul>
+            </section>
+            <hr>
+
+            <!-- Reference Section -->
+            <section class="main-section" id="reference">
+                <header>
+                    <h2>reference</h2>
+                </header>
+                <ul>
+                    <li>All of the Documentation on this page is taken from <a
+                            href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/GitHub"
+                            target="_blank" rel="noopener">MDN</a></li>
+                </ul>
+            </section>
+            <hr>
+        </div>
+    </main>
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+</body>
+
+</html>
